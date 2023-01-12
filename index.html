@@ -4,149 +4,81 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- JS -->
+    <script src="platforms_data.js"></script>
+    <script src="functions.js"></script>
+
     <title>CPM Calculator</title>
   </head>
 
   <body>
-    <!-- main header -->
-    <h1>FOS CPM Calculator</h1>
+    <div class="body-holder">
+      <!-- start left half (Input) -->
+      <div class="half-holder">
+        <!-- left half title -->
+        <h1 class="underline-text">Input</h1>
 
-    <!-- overall impressions sold -->
-    <h2>STEP 1 - Enter the overall impressions sold :</h2>
-    <!-- input field to read an integer -->
-    <input type="number" id="impressions" />
+        <!-- STEP 1 - input impressions -->
+        <div class="input-section-holder">
+          <h3>STEP 1 - Enter the overall impressions sold :</h3>
+          <br />
 
-    <!-- platforms -->
-    <h2>STEP 2 - Select the desired platforms:</h2>
+          <!-- input field to read an integer (in this case the total number of impressions sold) -->
+          <input class="number-input" type="number" id="impressions" />
+        </div>
 
-    <!-- create a dictionary with the platform, low CPM, avg CPM, high CPM and avg organic impressions-->
-    <script>
-      const platforms = {
-        "Instagram - Overall": {
-          lowCPM: 1.98,
-          avgCPM: 7.38,
-          highCPM: 12.56,
-          avgOrganicImpressions: 13968,
-        },
-        "Instagram - Feed Boost": {
-          lowCPM: 2.46,
-          avgCPM: 5.0,
-          highCPM: 7.55,
-          avgOrganicImpressions: 16669,
-        },
-        "Instagram - Reel Boost": {
-          lowCPM: 8.17,
-          avgCPM: 9.91,
-          highCPM: 12.56,
-          avgOrganicImpressions: 23439,
-        },
-        "Twitter - Overall": {
-          lowCPM: 1.65,
-          avgCPM: 3.88,
-          highCPM: 6.57,
-          avgOrganicImpressions: 28522,
-        },
-        "TikTok - Overall": {
-          lowCPM: 4.71,
-          avgCPM: 4.73,
-          highCPM: 4.75,
-          avgOrganicImpressions: 75363,
-        },
-        "LinkedIn - Overall": {
-          lowCPM: 7.53,
-          avgCPM: 9.1,
-          highCPM: 10.66,
-          avgOrganicImpressions: 13155,
-        },
-      };
-    </script>
+        <!-- horizontal line to seperate steps -->
+        <hr />
 
-    <!-- create a list of checkboxes for each platform -->
-    <script>
-      for (const platform in platforms) {
-        document.write(
-          `<input type="checkbox" id="${platform}" name="${platform}" value="${platform}"> <label for="${platform}">${platform}</label><br>`
-        );
-      }
-    </script>
+        <!-- STEP 2 - select platform(s) step -->
+        <div class="input-section-holder">
+          <h3>STEP 2 - Select the desired platform(s):</h3>
+          <br />
 
-    <!-- calculate button -->
-    <button onclick="calculate()">Calculate</button>
+          <!-- create a list of checkboxes for each platform (use platforms dictionary from platforms_data.js) -->
+          <script>
+            generateCheckboxes(platforms);
+          </script>
+        </div>
 
-    <!-- output -->
-    <h2>Output:</h2>
-    <p id="output"></p>
+        <!-- horizontal line to seperate steps -->
+        <hr />
 
-    <!-- calculate function -->
-    <script>
-      function calculate() {
-        // get the overall impressions sold
-        const impressions = document.getElementById("impressions").value;
+        <!-- STEP 3 - add additional costs step -->
+        <div class="input-section-holder">
+          <h3>STEP 3 - Margin (as a %):</h3>
+          <p>
+            NOTE: Default value is 70%. Set to 0 if you want to see just the
+            cost.
+          </p>
+          <br />
 
-        // get the selected platforms
-        const selectedPlatforms = [];
-        for (const platform in platforms) {
-          if (document.getElementById(platform).checked) {
-            selectedPlatforms.push(platform);
-          }
-        }
+          <!-- input margin costs (dafault is 0) -->
+          <input class="number-input" type="number" id="margin" value="70" />
+        </div>
 
-        // calculate the impressions to buy
-        const impressionsToBuy = {};
-        for (const platform of selectedPlatforms) {
-          impressionsToBuy[platform] =
-            impressions - platforms[platform].avgOrganicImpressions;
-        }
+        <!-- horizontal line to seperate steps -->
+        <hr />
 
-        // calculate the expected cost based on the low CPM
-        const costLow = {};
-        for (const platform of selectedPlatforms) {
-          costLow[platform] =
-            (impressionsToBuy[platform] / 1000) * platforms[platform].lowCPM;
-        }
+        <!-- calculate button (click this to populate the right side)-->
+        <button class="calculate-button" onclick="calculateCost()">
+          Calculate
+        </button>
+      </div>
+      <!-- end left half -->
 
-        // calculate the expected cost based on the avg CPM
-        const costAvg = {};
-        for (const platform of selectedPlatforms) {
-          costAvg[platform] =
-            (impressionsToBuy[platform] / 1000) * platforms[platform].avgCPM;
-        }
+      <!-- start right half (Output) -->
+      <div class="half-holder">
+        <h1 class="underline-text">Output</h1>
 
-        // calculate the expected cost based on the high CPM
-        const costHigh = {};
-        for (const platform of selectedPlatforms) {
-          costHigh[platform] =
-            (impressionsToBuy[platform] / 1000) * platforms[platform].highCPM;
-        }
-
-        // display the impressions to buy for each platform
-        let output = "Impressions To Buy:<br>";
-        for (const platform of selectedPlatforms) {
-          output += `${platform}: ${impressionsToBuy[platform]}<br>`;
-        }
-        document.getElementById("output").innerHTML = output;
-
-        // display the expected cost based on the low CPM for each platform
-        output += "<br>Expected Cost (Low CPM):<br>";
-        for (const platform of selectedPlatforms) {
-          output += `${platform}: $${costLow[platform].toFixed(2)}<br>`;
-        }
-        document.getElementById("output").innerHTML = output;
-
-        // display the expected cost based on the avg CPM for each platform
-        output += "<br>Expected Cost (Avg CPM):<br>";
-        for (const platform of selectedPlatforms) {
-          output += `${platform}: $${costAvg[platform].toFixed(2)}<br>`;
-        }
-        document.getElementById("output").innerHTML = output;
-
-        // display the expected cost based on the high CPM for each platform
-        output += "<br>Expected Cost (High CPM):<br>";
-        for (const platform of selectedPlatforms) {
-          output += `${platform}: $${costHigh[platform].toFixed(2)}<br>`;
-        }
-        document.getElementById("output").innerHTML = output;
-      }
-    </script>
+        <!-- empty output - will be populated when 'Calculate' button is clicked -->
+        <p id="output"></p>
+      </div>
+      <!-- end right half -->
+    </div>
   </body>
 </html>

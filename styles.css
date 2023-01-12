@@ -1,0 +1,131 @@
+/* START RESET CSS */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  overflow: visible;
+}
+
+/* END RESET CSS */
+
+/* body holder class goes inside the body */
+.body-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  /* height: 100vh; */
+
+  /* border: 1px solid blue; */
+}
+
+/* make a div holder that is half the width of the screen */
+.half-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+  width: 50%;
+  min-height: 100vh;
+  /* min-height: 100%; */
+  /* height: 100%; */
+
+  border: 1px solid grey;
+
+  padding: 20px;
+}
+
+/* SPLIT LINE */
+
+/* make a split line that is vertical when the screen is wide, and horizontal when the screen is small */
+.split-line {
+  width: 1px;
+  height: 100%;
+  background-color: black;
+}
+
+.input-section-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  /* border: 1px solid green; */
+}
+
+/* START TEXT DECORATION */
+
+.underline-text {
+  text-decoration: underline;
+}
+
+/* END TEXT DECORATION */
+
+.number-input {
+  width: 50%;
+  height: 30px;
+
+  border: 1px solid black;
+}
+
+.checkbox-input {
+  margin-right: 5px;
+}
+
+.checkbox-value-holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  /* border: 1px solid black; */
+}
+
+/* START CALCULATE BUTTON */
+
+.calculate-button {
+  width: 50%;
+  height: 30px;
+
+  border: 1px solid black;
+  background-color: green;
+  color: white;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.calculate-button:hover {
+  background-color: white;
+  color: green;
+}
+
+/* END CALCULATE BUTTON */
+
+/* START SCREEN SIZE */
+
+/* if screen is phone size*/
+@media screen and (max-width: 600px) {
+  /* change the layout of left and right side to be vertical, instead of horizontal */
+  .body-holder {
+    flex-direction: column;
+  }
+  .half-holder {
+    width: 100%;
+  }
+
+  /* change the split line to be horizontal, instead of vertical */
+  .split-line {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/* END SCREEN SIZE */
