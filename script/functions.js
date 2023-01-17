@@ -69,9 +69,9 @@ function calculateCost() {
     final_output.push({
       platform: platform,
       impressionsToBuy: impressionsToBuy.toLocaleString("en-US"),
-      costLowCPM: costLowCPMWithMargin.toFixed(2).toLocaleString("en-US"),
-      costAvgCPM: costAvgCPMWithMargin.toFixed(2).toLocaleString("en-US"),
-      costHighCPM: costHighCPMWithMargin.toFixed(2).toLocaleString("en-US"),
+      costLowCPM: costLowCPMWithMargin.toLocaleString("en-US"),
+      costAvgCPM: costAvgCPMWithMargin.toLocaleString("en-US"),
+      costHighCPM: costHighCPMWithMargin.toLocaleString("en-US"),
     });
   }
 
