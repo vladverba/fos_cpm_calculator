@@ -28,6 +28,12 @@ const platforms = {
     highCPM: 12.56,
     avgOrganicImpressions: 23439,
   },
+  "Instagram - Dark Post": {
+    lowCPM: 1.28,
+    avgCPM: 1.63,
+    highCPM: 1.98,
+    avgOrganicImpressions: 0,
+  },
   "Twitter - Overall": {
     lowCPM: 1.65,
     avgCPM: 3.88,
