@@ -4,7 +4,46 @@
 function generateCheckboxes(platforms_dict) {
   for (const platform in platforms_dict) {
     document.write(
-      `<div class="checkbox-value-holder"> <input class="checkbox-input" type="checkbox" id="${platform}" name="${platform}" value="${platform}"> <label for="${platform}">${platform}</label> </div> <br>`
+      `
+      <div class="checkbox-value-holder"> 
+        <input class="checkbox-input" 
+          type="checkbox" 
+          id="${platform}" 
+          name="${platform}" 
+          value="${platform}"> 
+        <label for="${platform}">${platform}</label> 
+      </div> 
+      <br>`
+    );
+  }
+}
+
+// create a list of checkboxes, one for each platform
+// also include a number field to get the total number of posts for each platform
+function generateCheckboxesWithPosts(platforms_dict) {
+  for (const platform in platforms_dict) {
+    // make a check box with the platform name and an input field for the number of posts
+    document.write(
+      `
+      <div class="checkbox-value-holder">
+        <input class="checkbox-input"
+          type="checkbox"
+          id="${platform}"
+          name="${platform}"
+          value="${platform}">
+        <label for="${platform}">${platform}</label>
+      </div>
+
+      <div class="num-posts-input">
+      <label for="${platform}-posts"> - Number of Posts: </label>
+
+      <input class="posts-input"
+        type="number"
+        id="${platform}-posts"
+        name="${platform}-posts"
+        value="0">
+      </div>
+      <br>`
     );
   }
 }

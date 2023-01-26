@@ -88,6 +88,15 @@ body {
   /* border: 1px solid black; */
 }
 
+.num-posts-input {
+  width: 50%;
+  height: 30px;
+
+  /* border: 1px solid black; */
+
+  margin-left: 30px;
+}
+
 /* START CALCULATE BUTTON */
 
 .calculate-button {
