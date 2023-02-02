@@ -285,3 +285,17 @@ function calculateClickedNew() {
     `;
   }
 }
+
+/*
+IMPROVEMENTS:
+
+process/logic:
+- segment everything into functions
+- steps should be like this:
+- 1. get all the checked checkboxes
+- 2. calculate data points for each platform
+- 3. display data points for each platform
+
+visual:
+- header and footer
+*/
