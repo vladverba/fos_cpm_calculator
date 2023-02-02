@@ -214,6 +214,12 @@ function calculateClickedNew() {
       (platform.impressionsToBuy / 1000) *
         PLATFORMS_DATA_DICT[platform.platform].avgCPM
     );
+
+    // calculate organic impressions
+    platform.organicImpressions = Math.ceil(
+      platform.posts *
+        PLATFORMS_DATA_DICT[platform.platform].avgOrganicImpressions
+    );
   }
 
   console.log("--- selected platforms updated ---");
@@ -246,5 +252,36 @@ function calculateClickedNew() {
         "en-US"
       )}</div>
     </div>
+    </br>
   `;
+
+  // add per platform variables to output
+  for (const platform of selectedPlatforms) {
+    impressionsInt = parseInt(platform.impressions);
+    postsCountInt = parseInt(platform.posts);
+
+    document.getElementById("output").innerHTML += `
+      <div class="output">
+        <h3 class="underline-text">${platform.platform}:</h3>
+        <div class="output-holder">Total Impressions: ${impressionsInt.toLocaleString(
+          "en-US"
+        )}</div>
+        <div class="output-holder">Est Organic Impressions: ${platform.organicImpressions.toLocaleString(
+          "en-US"
+        )}</div>
+        <div class="output-holder">Impressions to Buy: ${platform.impressionsToBuy.toLocaleString(
+          "en-US"
+        )}</div>
+        <div class="output-holder">Impressions to Buy Per Post: ${parseInt(
+          platform.impressionsToBuy / postsCountInt
+        ).toLocaleString("en-US")}</div>
+      </div>
+      <div class="output-holder">Avg CPM Spend Per Post: $${parseInt(
+        (platform.impressionsToBuy / postsCountInt / 1000) *
+          PLATFORMS_DATA_DICT[platform.platform].avgCPM
+      ).toLocaleString("en-US")}</div>
+      </div>
+      </br>
+    `;
+  }
 }
