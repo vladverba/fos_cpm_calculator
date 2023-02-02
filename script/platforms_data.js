@@ -9,7 +9,7 @@ that has a collection of out social platforms and their data.
 
 */
 
-const platforms = {
+const PLATFORMS_DATA_DICT = {
   "Instagram - Overall": {
     lowCPM: 1.98,
     avgCPM: 7.38,

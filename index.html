@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOS Social P&L</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles/styles.css" />
@@ -12,43 +11,37 @@
     <!-- JS -->
     <script src="script/platforms_data.js"></script>
     <script src="script/functions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>FOS CPM Calculator</title>
   </head>
-  <body class="body-holder">
-    <div class="half-holder">
-      <!-- STEP 1 - input total revenue -->
-      <div class="input-section-holder">
-        <h3>STEP 1 - Enter the total campaign <i>revenue</i>:</h3>
+  <body>
+    <!-- start small body inside of body -->
+    <div class="body-holder">
+      <!-- start left half (input half) -->
+      <div class="half-holder">
+        <!-- half title -->
+        <h1 class="underline-text">Input</h1>
         <br />
-
-        <!-- input field to read an integer (in this case the total number of impressions sold) -->
-        <input class="number-input" type="number" id="impressions" />
-      </div>
-
-      <!-- horizontal line to seperate steps -->
-      <hr />
-
-      <!-- STEP 2 - select platform(s) step -->
-      <div class="input-section-holder">
-        <h3>STEP 2 - Select the desired platform(s):</h3>
-        <br />
-
-        <!-- create a list of checkboxes for each platform (use platforms dictionary from platforms_data.js) -->
+        <!-- generate checkboxes for each platform (use platforms dictionary from platforms_data.js) -->
         <script>
-          generateCheckboxesWithPosts(platforms);
+          generateCheckBoxes(PLATFORMS_DATA_DICT);
         </script>
+
+        <!-- horizontal line to seperate steps -->
+        <hr />
+
+        <button class="calculate-button" onclick="calculateClickedNew()">
+          Calculate
+        </button>
       </div>
 
-      <!-- horizontal line to seperate steps -->
-      <hr />
+      <!-- start right half (output half) -->
+      <div class="half-holder">
+        <h1 class="underline-text">Output</h1>
+        <!-- empty output - will be populated when 'Calculate' button is clicked -->
+        <div id="output" class="output-div"></div>
+      </div>
     </div>
-
-    <!-- start right half (Output) -->
-    <div class="half-holder">
-      <h1 class="underline-text">Output</h1>
-
-      <!-- empty output - will be populated when 'Calculate' button is clicked -->
-      <p id="output"></p>
-    </div>
-    <!-- end right half -->
   </body>
 </html>
