@@ -11,10 +11,10 @@ that has a collection of out social platforms and their data.
 
 const PLATFORMS_DATA_DICT = {
   "Instagram - Overall": {
-    lowCPM: 1.98,
-    avgCPM: 7.38,
-    highCPM: 12.56,
-    avgOrganicImpressions: 13968,
+    lowCPM: 2.46,
+    avgCPM: 7.76,
+    highCPM: 13.06,
+    avgOrganicImpressions: 17055,
   },
   "Instagram - Feed Boost": {
     lowCPM: 2.46,
@@ -29,16 +29,16 @@ const PLATFORMS_DATA_DICT = {
     avgOrganicImpressions: 23439,
   },
   "Instagram - Dark Post": {
-    lowCPM: 1.28,
-    avgCPM: 1.63,
+    lowCPM: 1.3,
+    avgCPM: 1.64,
     highCPM: 1.98,
     avgOrganicImpressions: 0,
   },
   "Twitter - Overall": {
-    lowCPM: 1.65,
-    avgCPM: 3.88,
+    lowCPM: 0.58,
+    avgCPM: 3.15,
     highCPM: 6.57,
-    avgOrganicImpressions: 28522,
+    avgOrganicImpressions: 40678,
   },
   "TikTok - Overall": {
     lowCPM: 4.71,
