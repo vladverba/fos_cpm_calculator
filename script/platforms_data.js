@@ -42,7 +42,7 @@ const PLATFORMS_DATA_DICT = {
     lowCPM: 4.71,
     avgCPM: 4.73,
     highCPM: 4.75,
-    avgOrganicImpressions: 75363,
+    avgOrganicImpressions: 4000,
   },
   "LinkedIn - Overall": {
     lowCPM: 7.53,
