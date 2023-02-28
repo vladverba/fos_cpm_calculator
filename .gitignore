@@ -1,2 +1,6 @@
-/old
+/venv
 .DS_Store
+.env
+
+/website
+/old
